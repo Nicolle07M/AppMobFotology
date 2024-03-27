@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { MyColors } from '../theme/AppTheme'; 
+import { MyColors } from '../Presentation/theme/AppTheme'; 
 
 interface Props {
     text: string;
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   RoundedButton: {
     width: '100%',
     height: 50,
-    backgroundColor: MyColors.primary, 
+    backgroundColor: MyColors.colorButton, 
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 15,
