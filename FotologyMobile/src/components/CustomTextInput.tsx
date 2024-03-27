@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, TextInput, StyleSheet, KeyboardType } from 'react-native';
 
 interface Props {
-  placeholder: string;
+  //placeholder: string;
   value: string;
   keyboardType: KeyboardType;
   secureTextEntry?: boolean;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const CustomTextInput = ({
-  placeholder,
+  //placeholder,
   value,
   keyboardType,
   secureTextEntry = false,
@@ -21,7 +21,7 @@ export const CustomTextInput = ({
   return (
       <TextInput
         style={styles.formTextInput}
-        placeholder={placeholder}
+        //placeholder={placeholder}
         keyboardType={keyboardType}
         value={value}
         onChangeText={text => onChangeText(property, text)}
@@ -41,9 +41,11 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   formTextInput: {
-    flex: 1,
-    borderBottomWidth: 1,
-    borderBottomColor: '#AAAAAA',
-    marginLeft: 15,
+    backgroundColor: '#FFA50080', // Color de fondo naranja claro
+    borderRadius: 15, // Borde redondeado
+    width: '80%',
+    height: 50,
+    marginBottom: 20,
+    alignSelf: 'center'
   }
 });

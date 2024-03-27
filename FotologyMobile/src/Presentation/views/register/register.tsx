@@ -27,7 +27,7 @@ export const RegisterScreen = () => {
       <View style={styles.form}>
         <Text style={styles.formText}>Registrate con nosotros!</Text>
         <CustomTextInput
-              placeholder='Nombres'
+              
               keyboardType='default'
               property='name'
               onChangeText={onChange}
@@ -35,7 +35,7 @@ export const RegisterScreen = () => {
             />
 
             <CustomTextInput
-              placeholder='Apellidos'
+              
               keyboardType='default'
               property='lastname'
               onChangeText={onChange}
@@ -43,7 +43,7 @@ export const RegisterScreen = () => {
             />
 
             <CustomTextInput
-              placeholder='Correo electrónico'
+              
               keyboardType='email-address'
               property='email'
               onChangeText={onChange}
@@ -51,7 +51,7 @@ export const RegisterScreen = () => {
             />
 
             <CustomTextInput
-              placeholder='Teléfono'
+              
               keyboardType='numeric'
               property='phone'
               onChangeText={onChange}
@@ -59,7 +59,7 @@ export const RegisterScreen = () => {
             />
 
             <CustomTextInput
-              placeholder='Contraseña'
+              
               keyboardType='default'
               property='password'
               onChangeText={onChange}
@@ -68,7 +68,7 @@ export const RegisterScreen = () => {
             />
 
             <CustomTextInput
-              placeholder='Confirmar Contraseña'
+             
               keyboardType='default'
               property='confirmPassword'
               onChangeText={onChange}

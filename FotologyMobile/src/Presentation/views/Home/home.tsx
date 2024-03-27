@@ -15,9 +15,6 @@ export const HomeScreen = () => {
 
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
-  const handleRegisterPress = () => {
-    navigation.navigate('RegisterScreen'); // Reemplaza 'Register' con el nombre de tu pantalla de registro en tus rutas de navegación
-    };
 
   return (
     <View style={styles.container}>
@@ -26,25 +23,35 @@ export const HomeScreen = () => {
         style={styles.imageBackground}
       />
       <View style={styles.logoContainer}>
+      <View style={styles.logoBackground}>
         <Image
           source={require('../../../../assets/logo2.png')}
           style={styles.logoImage}
         />
+         </View>
       </View>
+    
       <View style={styles.form}>
+      <Text> {'\n'}</Text>
         <Text style={styles.formText}>Iniciar Sesión</Text>
         <Text style={styles.formText1}>Inicia y explora!</Text>
 
+        <Text></Text>
+
+        <Text style={styles.formText2}>Correo Electronico</Text>
+
         <CustomTextInput
-          placeholder='Correo electrónico'
+          //placeholder='Correo electrónico'
           keyboardType='email-address'
           property='email'
           onChangeText={onChange}
           value={email}
         />
 
+
+      <Text style={styles.formText2}>Contraseña</Text>
         <CustomTextInput
-          placeholder='Contraseña'
+          //placeholder='Contraseña'
           keyboardType='default'
           property='password'
           onChangeText={onChange}
@@ -52,7 +59,7 @@ export const HomeScreen = () => {
           secureTextEntry={true}
         />
 
-        <View style={{ marginTop: 30 }}>
+        <View style={{ marginTop: 15 }}>
           <RoundedButton text='Ingresar' onPress={() =>{
             console.log('Email: ' + email);
             console.log('Password: ' + password);
