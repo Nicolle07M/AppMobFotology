@@ -46,6 +46,8 @@ const styles = StyleSheet.create({
     width: '80%',
     height: 50,
     marginBottom: 20,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    paddingVertical: 5, // Ajusta el espacio vertical según sea necesario
+    paddingHorizontal: 15,
   }
 });

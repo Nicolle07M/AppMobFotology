@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TextInput, ToastAndroid } from 'react-native';
+import { View, Text, StyleSheet, Image, TextInput, ToastAndroid, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { RoundedButton } from '../../../components/RoundedButton';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -25,7 +25,11 @@ export const RegisterScreen = () => {
         <Text style={styles.logoText}>SELECCIONA UNA IMAGEN</Text>
       </View>
       <View style={styles.form}>
-        <Text style={styles.formText}>Registrate con nosotros!</Text>
+      <ScrollView>
+        
+        <Text style={styles.formText}>Crea una cuenta!</Text>
+
+        <Text style={styles.formText2}>Nombre</Text>
         <CustomTextInput
               
               keyboardType='default'
@@ -33,7 +37,7 @@ export const RegisterScreen = () => {
               onChangeText={onChange}
               value={name}
             />
-
+        <Text style={styles.formText2}>Apellido</Text>
             <CustomTextInput
               
               keyboardType='default'
@@ -41,7 +45,7 @@ export const RegisterScreen = () => {
               onChangeText={onChange}
               value={lastname}
             />
-
+        <Text style={styles.formText2}>Correo Electronico</Text>
             <CustomTextInput
               
               keyboardType='email-address'
@@ -49,7 +53,7 @@ export const RegisterScreen = () => {
               onChangeText={onChange}
               value={email}
             />
-
+          <Text style={styles.formText2}>Telefono</Text>
             <CustomTextInput
               
               keyboardType='numeric'
@@ -57,7 +61,7 @@ export const RegisterScreen = () => {
               onChangeText={onChange}
               value={phone}
             />
-
+          <Text style={styles.formText2}>Contraseña</Text>
             <CustomTextInput
               
               keyboardType='default'
@@ -66,7 +70,7 @@ export const RegisterScreen = () => {
               value={password}
               secureTextEntry={true}
             />
-
+          <Text style={styles.formText2}>Confirmar Contraseña</Text>
             <CustomTextInput
              
               keyboardType='default'
@@ -76,9 +80,10 @@ export const RegisterScreen = () => {
               secureTextEntry={true}
             />
 
-        <View style={{ marginTop: 30 }}>
-        <RoundedButton text='CONFIRMAR' onPress={() => register()} />
+        <View style={{ marginTop: 10 }}>
+        <RoundedButton text='Registrar' onPress={() => register()} />
         </View>
+        </ScrollView>
       </View>
     </View>
   );

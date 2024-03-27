@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
     borderRadius: 10,
+    
   },
   textButton: {
     color: 'white',

@@ -16,14 +16,24 @@ const RegisterStyle = StyleSheet.create({
       backgroundColor: 'white',
       position: 'absolute',
       bottom: 0,
-      borderTopLeftRadius: 40,
-      borderTopRightRadius: 40,
+      borderTopLeftRadius: 75,
+      borderTopRightRadius: 0,
       padding: 30,
     },
     formText: {
       fontWeight: 'bold',
-      fontSize: 16,
+      fontSize: 37,
+      alignSelf: 'center',
+      marginBottom: 30,
     },
+    formText2: {
+        fontWeight: 'bold',
+        fontSize: 14,
+        alignSelf: 'baseline',
+        color: '#bdbdbd',
+        marginBottom: 5,
+        marginLeft: 35
+      },
     formIcon: {
       width: 25,
       height: 25,
