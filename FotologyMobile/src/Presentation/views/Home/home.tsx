@@ -5,6 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../App';
 import useViewModel from '../Home/viewModel';
+import { CustomTextInput } from '../../../components/CustomTextInput';
+import styles from './Styles';
 
 export const HomeScreen = () => {
 
@@ -32,113 +34,43 @@ export const HomeScreen = () => {
       <View style={styles.form}>
         <Text style={styles.formText}>Iniciar Sesión</Text>
         <Text style={styles.formText1}>Inicia y explora!</Text>
-        <View style={styles.formInput}>
-        <TextInput
-          style={styles.formTextInput}
+
+        <CustomTextInput
           placeholder='Correo electrónico'
           keyboardType='email-address'
+          property='email'
+          onChangeText={onChange}
           value={email}
-          onChangeText={ text => onChange('email', text)}
         />
-      </View>
-        <View style={styles.formInput}>
-          <TextInput
-            style={styles.formTextInput}
-            placeholder='Contraseña'
-            keyboardType='default'
-            secureTextEntry={true}
-            value={password}
-            onChangeText={ text => onChange('password', text)}
-          />
-        </View>
+
+        <CustomTextInput
+          placeholder='Contraseña'
+          keyboardType='default'
+          property='password'
+          onChangeText={onChange}
+          value={password}
+          secureTextEntry={true}
+        />
+
         <View style={{ marginTop: 30 }}>
           <RoundedButton text='Ingresar' onPress={() =>{
             console.log('Email: ' + email);
             console.log('Password: ' + password);
             }} />
         </View>
+
         <View style={styles.formRegister}>
           <Text>¿No tienes cuenta?</Text>
-          <TouchableOpacity onPress={handleRegisterPress}>
-          <Text style={styles.formRegisterText}>Regístrate</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
+            <Text style={styles.formRegisterText}>Regístrate</Text>
           </TouchableOpacity>
         </View>
+
       </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'black',
-  },
-  imageBackground: {
-    width: '100%',
-    height: '100%',
-    bottom: '30%',
-  },
-  form: {
-    width: '100%',
-    height: '60%',
-    backgroundColor: 'white',
-    position: 'absolute',
-    bottom: 0,
-    borderTopLeftRadius: 0,
-    borderTopRightRadius: 75,
-    padding: 30,
-  },
-  formText: {
-    fontWeight: 'bold',
-    fontSize: 45,
-    alignSelf: 'center',
-  },
-  formText1: {
-    fontWeight: 'bold',
-    fontSize: 14,
-    alignSelf: 'center',
-    color: '#bdbdbd',
-  },
-  formInput: {
-    backgroundColor: '#FFA50080', // Color de fondo naranja claro
-    borderRadius: 10, // Borde redondeado
-    width: '80%',
-    marginBottom: 20,
-    alignSelf: 'center'
-  },
-  formTextInput: {
-    padding: 10,
-    fontSize: 16,
-  },
-  formRegister: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 30,
-  },
-  formRegisterText: {
-    fontStyle: 'italic',
-    color: 'orange',
-    borderBottomWidth: 1,
-    borderBottomColor: 'orange',
-    fontWeight: 'bold',
-    marginLeft: 10,
-  },
-  logoContainer: {
-    position: 'absolute',
-    alignSelf: 'center',
-    top: '15%',
-  },
-  logoImage: {
-    width: 100,
-    height: 100,
-  },
-  logoText: {
-    color: 'white',
-    textAlign: 'center',
-    fontSize: 20,
-    marginTop: 10,
-    fontWeight: 'bold',
-  },
-});
+
 
 export default HomeScreen;
