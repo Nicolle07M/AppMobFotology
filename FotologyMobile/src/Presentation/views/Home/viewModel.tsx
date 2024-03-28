@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LoginAuthUseCase } from '../../../Domain/useCases/auth/LoginAuth'; 
+import { SaveUserLocalUseCase } from '../../../Domain/useCases/userLocal/SaveUserLocal';
+import { GetUserLocalUseCase } from '../../../Domain/useCases/userLocal/GetUserLocal';
 
 
 const HomeViewModel = () => {
@@ -9,6 +11,15 @@ const HomeViewModel = () => {
     password: '',
   });
 
+
+  useEffect(() => { //Se ejecuta cuando se instancia el viewModel
+    getUserSession();
+    }, []);
+   
+    const getUserSession = async () => {
+    const user = await GetUserLocalUseCase ();
+    console.log('Usuario Sesion: ' + JSON.stringify(user));
+    }  
   const onChange = (property: string, value: any) => {
     setValues({ ...values, [property]: value });
   };
@@ -21,10 +32,13 @@ const HomeViewModel = () => {
     if(!response.success) {
     setErrorMessage(response.message);
     }
+    else {
+    await SaveUserLocalUseCase(response.data);
+    }
     }
     };
 
-    
+
     const isValidForm = () => {
     if (values.email === '') {
     setErrorMessage('El email es requerido');
