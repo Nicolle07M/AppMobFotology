@@ -1,18 +1,18 @@
 import React from 'react';
-import { View, Text, Image, ToastAndroid, ScrollView } from 'react-native';
+import { View, Text, Image, ToastAndroid, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { RoundedButton } from '../../components/RoundedButton';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../../../App';
 import { CustomTextInput } from '../../components/CustomTextInput';
 import useViewModel from '../register/viewModel';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Styles';
+import ModalPickImage from '../../components/ModalPickImage';
 
 export const RegisterScreen = () => {
   
-  const { name, lastname, phone, email, password, confirmPassword, 
-    errorMessage, onChange, register } = useViewModel();
+  const { name, lastname, phone, image, email, password, confirmPassword, 
+    errorMessage, onChange, register, pickImage, takePhoto } = useViewModel();
+    const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     if (errorMessage !== '')
@@ -26,10 +26,22 @@ export const RegisterScreen = () => {
         style={styles.imageBackground}
       />
       <View style={styles.logoContainer}>
+      <TouchableOpacity onPress={() => setModalVisible(true)}>
+      {
+      image === '' 
+      ? 
         <Image
           source={require('../../../../assets/usuario.png')}
           style={styles.logoImage}
         />
+       : 
+        <Image 
+        source={{ uri: image }} 
+        style={styles.logoImage} 
+        />
+      }
+    </TouchableOpacity>
+
         <Text style={styles.logoText}>SELECCIONA UNA IMAGEN</Text>
       </View>
       <View style={styles.form}>
@@ -93,6 +105,13 @@ export const RegisterScreen = () => {
         </View>
         </ScrollView>
       </View>
+
+      <ModalPickImage
+          openGallery={pickImage}
+          openCamera={takePhoto}
+          setModalUseState={setModalVisible}
+          modalUseState={modalVisible}
+      />
     </View>
   );
 };
