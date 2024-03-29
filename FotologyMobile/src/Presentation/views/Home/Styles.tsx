@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { CustomTextInput } from '../../../components/CustomTextInput';
+import { CustomTextInput } from '../../components/CustomTextInput';
 
 const HomeStyles = StyleSheet.create({
     container: {

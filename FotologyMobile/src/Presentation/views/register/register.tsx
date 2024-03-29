@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, Image, ToastAndroid, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { RoundedButton } from '../../../components/RoundedButton';
+import { RoundedButton } from '../../components/RoundedButton';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../../App';
-import { CustomTextInput } from '../../../components/CustomTextInput';
+import { CustomTextInput } from '../../components/CustomTextInput';
 import useViewModel from '../register/viewModel';
 import { useEffect } from 'react';
 import styles from './Styles';
