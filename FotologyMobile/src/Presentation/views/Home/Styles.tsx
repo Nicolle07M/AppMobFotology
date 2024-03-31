@@ -24,13 +24,14 @@ const HomeStyles = StyleSheet.create({
     formText: {
         fontWeight: 'bold',
         fontSize: 45,
-        alignSelf: 'center',    
+        alignSelf: 'center',
     },
     formText1: {
       fontWeight: 'bold',
       fontSize: 14,
       alignSelf: 'center',
       color: '#bdbdbd',
+    
     },
     formText2: {
         fontWeight: 'bold',

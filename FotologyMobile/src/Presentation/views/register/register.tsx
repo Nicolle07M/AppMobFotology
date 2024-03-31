@@ -6,11 +6,14 @@ import { CustomTextInput } from '../../components/CustomTextInput';
 import useViewModel from '../register/viewModel';
 import { useEffect, useState } from 'react';
 import styles from './Styles';
+import ModalPickImage from '../../components/ModalPickImage';
 
 export const RegisterScreen = () => {
   
-  const { name, lastname, phone, image, email, password, confirmPassword, 
-    errorMessage, onChange, register, pickImage } = useViewModel();
+  const { name, lastname, email, phone, password, image, confirmPassword, errorMessage,
+     onChange, register, pickImage, takePhoto } = useViewModel();
+
+const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     if (errorMessage !== '')
@@ -24,21 +27,35 @@ export const RegisterScreen = () => {
         style={styles.imageBackground}
       />
       <View style={styles.logoContainer}>
-      <TouchableOpacity onPress={() => pickImage()}> 
-          {
-            image == ''
-            ?
-            <Image 
-              source={ require('../../../../assets/usuario.png') }
-              style={ styles.logoImage }
-            />
-          :
-            <Image 
-              source={{uri: image}}
-              style={styles.logoImage}
-            />
-          }
-          </TouchableOpacity>
+      <TouchableOpacity onPress={() => setModalVisible(true)}>
+
+{
+
+image == ''
+
+?
+
+<Image
+
+source={require('../../../../assets/usuario.png')}
+
+style={styles.logoImage}
+
+/>
+
+:
+
+<Image
+
+source={{ uri: image }}
+
+style={styles.logoImage}
+
+/>
+
+}
+
+</TouchableOpacity>
 
         <Text style={styles.logoText}>SELECCIONA UNA IMAGEN</Text>
       </View>
@@ -103,6 +120,17 @@ export const RegisterScreen = () => {
         </View>
         </ScrollView>
       </View>
+      <ModalPickImage
+
+openGallery={pickImage}
+
+openCamera={takePhoto}
+
+setModalUseState={setModalVisible}
+
+modalUseState={modalVisible}
+
+/>
     </View>
   );
 };
