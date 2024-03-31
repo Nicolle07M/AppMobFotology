@@ -17,6 +17,8 @@
     "expo": "~50.0.14",
     "expo-image-picker": "^14.7.1",
     "expo-status-bar": "~1.11.1",
+    "mime": "^4.0.1",
+    "mimi": "^0.1.1",
     "mysql2": "^3.9.3",
     "react": "18.2.0",
     "react-native": "0.73.6",
@@ -25,6 +27,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@types/mime": "^4.0.0",
     "@types/react": "~18.2.45",
     "typescript": "^5.1.3"
   },
