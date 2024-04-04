@@ -4,11 +4,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeScreen } from './src/Presentation/views/Home/home';
 import { RegisterScreen } from './src/Presentation/views/register/register';
 import { ProfileInfoScreen } from './src/Presentation/views/Profile/info/ProfileInfo'; 
+import PhotographersScreen from './src/Presentation/views/Client/view/Destacados';
+import WelcomeScreen from './src/Presentation/views/Client/view/Welcome';
+import CategoriesScreen from './src/Presentation/views/Client/view/Categorias'
+import 'react-native-gesture-handler';
+
 
 export type RootStackParamList = {
   HomeScreen: undefined;
   RegisterScreen: undefined;
   ProfileInfoScreen: undefined;
+  WelcomeScreen: undefined;
+  PhotographersScreen: undefined;
+  CategoriesScreen: undefined;
+  
  };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -20,6 +29,7 @@ const App = () => {
         screenOptions={{
           headerShown: false
         }}>
+          
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
@@ -29,13 +39,29 @@ const App = () => {
           component={RegisterScreen}
           options={{
             headerShown: true,
-            title: 'Registro'
+            title: 'Nuevo Usuario'
           }}
         />
         <Stack.Screen
         name="ProfileInfoScreen"
         component={ProfileInfoScreen}
         />
+
+          <Stack.Screen
+        name="WelcomeScreen"
+        component={WelcomeScreen}
+        
+        />
+        <Stack.Screen 
+        name="PhotographersScreen" 
+        component={PhotographersScreen}
+         />
+
+      <Stack.Screen 
+        name="CategoriesScreen" 
+        component={CategoriesScreen}
+         />
+
 
       </Stack.Navigator>
     </NavigationContainer>

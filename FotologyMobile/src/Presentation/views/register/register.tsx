@@ -1,16 +1,19 @@
-import React from 'react';
-import { View, Text, Image, ToastAndroid, ScrollView, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import { View, Text, Image, ToastAndroid, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { RoundedButton } from '../../components/RoundedButton';
 import { CustomTextInput } from '../../components/CustomTextInput';
 import useViewModel from '../register/viewModel';
-import { useEffect, useState } from 'react';
-import styles from './Styles';
+import styles from '../register/Styles';
 import ModalPickImage from '../../components/ModalPickImage';
+import { MyColors } from '../../theme/AppTheme';
+import { StackScreenProps } from '@react-navigation/stack';
+import { RootStackParamList } from '../../../../App';
 
-export const RegisterScreen = () => {
+interface Props extends StackScreenProps<RootStackParamList, 'RegisterScreen'> { };
+
+export const RegisterScreen = ({navigation, route}: Props) => {
   
-  const { name, lastname, email, phone, password, image, confirmPassword, errorMessage,
+  const { name, lastname, email, phone, password, image, confirmPassword, errorMessage, loading, user,
      onChange, register, pickImage, takePhoto } = useViewModel();
 
 const [modalVisible, setModalVisible] = useState(false);
@@ -19,6 +22,13 @@ const [modalVisible, setModalVisible] = useState(false);
     if (errorMessage !== '')
     ToastAndroid.show(errorMessage, ToastAndroid.LONG)
     }, [errorMessage]);
+
+    useEffect(() => {
+      if (user?.id !== null && user?.id !== undefined) {
+        navigation.replace('WelcomeScreen');
+      }
+      
+    }, [user]);
 
   return (
     <View style={styles.container}>
@@ -121,16 +131,19 @@ style={styles.logoImage}
         </ScrollView>
       </View>
       <ModalPickImage
-
-openGallery={pickImage}
-
-openCamera={takePhoto}
-
-setModalUseState={setModalVisible}
-
-modalUseState={modalVisible}
-
-/>
+        openGallery={pickImage}
+        openCamera={takePhoto}
+        setModalUseState={setModalVisible}
+        modalUseState={modalVisible}
+        />
+        {
+          loading &&
+          <ActivityIndicator
+          style={styles.loading}
+          size="large"
+          color={MyColors.primary}
+        />
+      }
     </View>
   );
 };

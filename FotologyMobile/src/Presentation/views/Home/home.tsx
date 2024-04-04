@@ -8,8 +8,7 @@ import useViewModel from '../Home/viewModel';
 import { CustomTextInput } from '../../../Presentation/components/CustomTextInput';
 import styles from './Styles';
 
-interface Props extends StackScreenProps<RootStackParamList,
-'HomeScreen'>{};
+interface Props extends StackScreenProps<RootStackParamList,'HomeScreen'>{};
 
 export const HomeScreen = ( {navigation, route}: Props ) => {
 
@@ -25,9 +24,11 @@ export const HomeScreen = ( {navigation, route}: Props ) => {
     }, [errorMessage]);
     useEffect(() => {
     if (user?.id !== null && user?.id !== undefined) {
-    navigation.replace('ProfileInfoScreen');
+    navigation.replace('WelcomeScreen');
     }
     }, [user]);
+
+    
 
   return (
     <View style={styles.container}>
